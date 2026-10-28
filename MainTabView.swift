@@ -287,10 +287,9 @@ struct MainTabView: View {
                     }
                 } else {
                     List(filteredRecipes) { recipe in
-                        NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                        NavigationLink(destination: RecipeDetailView(recipe: recipe).modifier(SelectionHapticOnAppear())) {
                             RecipeRowLarge(recipe: recipe, isSearchResult: true)
                         }
-                        .simultaneousGesture(TapGesture().onEnded { Haptics.selection() })
                     }
                     .listStyle(.plain)
                 }

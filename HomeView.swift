@@ -308,10 +308,9 @@ struct RecipeListView: View {
                 }
             } else {
                 List(recipes) { recipe in
-                    NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                    NavigationLink(destination: RecipeDetailView(recipe: recipe).modifier(SelectionHapticOnAppear())) {
                         RecipeRowLarge(recipe: recipe)
                     }
-                    .simultaneousGesture(TapGesture().onEnded { Haptics.selection() })
                 }
             }
         }

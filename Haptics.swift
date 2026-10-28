@@ -27,6 +27,23 @@ enum Haptics {
     }
 }
 
+// MARK: - Selection haptic for pushed recipe rows
+
+/// Plays selection feedback the first time a pushed view appears.
+/// Use on the destination of recipe rows instead of `.simultaneousGesture(TapGesture())`,
+/// which swallows the row tap in those Lists so the NavigationLink never pushes.
+struct SelectionHapticOnAppear: ViewModifier {
+    @State private var hasPlayed = false
+
+    func body(content: Content) -> some View {
+        content.onAppear {
+            guard !hasPlayed else { return }
+            hasPlayed = true
+            Haptics.selection()
+        }
+    }
+}
+
 // MARK: - Scroll offset observer for equipment strip haptics
 
 /// Observes a horizontal ScrollView's content offset and triggers light impact when the centered item index changes.
