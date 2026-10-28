@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AeroPress Assistant</title>
+<meta name="description" content="A SwiftUI iOS app for AeroPress brewing: recipe library, guided brew timer, and brew and beans journals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f1ea;
+    --surface: #fffdf9;
+    --text: #2a1f17;
+    --muted: #7a6a5c;
+    --accent: #a8754f;
+    --accent-ink: #fff;
+    --edge: #e6dccf;
+    --phone: #1d1612;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17110d;
+      --surface: #221a14;
+      --text: #f2e9df;
+      --muted: #b5a493;
+      --accent: #c9926a;
+      --accent-ink: #17110d;
+      --edge: #3a2e25;
+      --phone: #000;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 Inter, system-ui, sans-serif;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 56px 16px 80px; }
+  .hero { display: grid; grid-template-columns: 1fr auto; gap: 56px; align-items: center; }
+  h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; margin: 0 0 16px; }
+  h1 span { color: var(--accent); }
+  .lede { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 0 28px; }
+  ul.features { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 10px; }
+  ul.features li { padding-left: 22px; position: relative; }
+  ul.features li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .phone { width: 300px; padding: 10px; border-radius: 48px; background: var(--phone); box-shadow: 0 30px 60px -20px rgba(60,35,15,.45); }
+  .phone video { display: block; width: 100%; border-radius: 38px; background: #000; }
+  .note { font-size: .85rem; color: var(--muted); text-align: center; margin-top: 12px; }
+  h2 { font-family: Fraunces, Georgia, serif; font-size: 1.8rem; margin: 88px 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 24px; }
+  figure { margin: 0; }
+  figure img { width: 100%; display: block; border-radius: 22px; border: 1px solid var(--edge); background: var(--surface); }
+  figcaption { font-size: .9rem; color: var(--muted); margin-top: 8px; text-align: center; }
+  footer { margin-top: 72px; color: var(--muted); font-size: .9rem; }
+  footer a { color: var(--accent); }
+  @media (max-width: 760px) {
+    .wrap { padding-top: 32px; }
+    .hero { grid-template-columns: 1fr; gap: 36px; }
+    .phone { margin: 0 auto; width: min(300px, 100%); }
+    .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <h1><span>AeroPress</span> Assistant</h1>
+      <p class="lede">A SwiftUI iPhone app that turns AeroPress recipes into a guided, timed brew, and remembers how each cup turned out.</p>
+      <ul class="features">
+        <li>88 built-in recipes, including World AeroPress Championship podium recipes</li>
+        <li>Browse by equipment, cup type, brew method and accessories, or search</li>
+        <li>Step-by-step brew timer with per-step countdowns</li>
+        <li>Brew journal with ratings and tasting notes, plus a beans journal</li>
+        <li>Favorites, custom recipes and "I'm feeling lucky"</li>
+      </ul>
+      <div class="links">
+        <a class="btn primary" href="https://github.com/jahoi12345/aeropress-assistant">View code on GitHub</a>
+        <a class="btn" href="#screens">Screenshots</a>
+      </div>
+    </div>
+    <div>
+      <div class="phone">
+        <video src="demo.mp4" poster="poster.jpg" autoplay muted loop playsinline controls></video>
+      </div>
+      <p class="note">Screen recording from the iOS Simulator</p>
+    </div>
+  </section>
+
+  <h2 id="screens">Screens</h2>
+  <p class="sub">From finding a recipe to logging the cup.</p>
+  <div class="gallery">
+    <figure><img src="screenshots/01-home.png" alt="Home screen" loading="lazy"><figcaption>Home</figcaption></figure>
+    <figure><img src="screenshots/02-cup-types.png" alt="Cup types" loading="lazy"><figcaption>Cup types</figcaption></figure>
+    <figure><img src="screenshots/03-recipe-list.png" alt="Iced recipes" loading="lazy"><figcaption>Recipe list</figcaption></figure>
+    <figure><img src="screenshots/04-recipe-detail.png" alt="Recipe detail" loading="lazy"><figcaption>Recipe detail</figcaption></figure>
+    <figure><img src="screenshots/05-brew-prep.png" alt="Brew prep steps" loading="lazy"><figcaption>Brew prep</figcaption></figure>
+    <figure><img src="screenshots/06-brew-timer.png" alt="Brew timer running" loading="lazy"><figcaption>Brew timer</figcaption></figure>
+    <figure><img src="screenshots/07-brew-done.png" alt="Brew complete" loading="lazy"><figcaption>Brew complete</figcaption></figure>
+    <figure><img src="screenshots/08-log-brew.png" alt="Log a brew form" loading="lazy"><figcaption>Log a brew</figcaption></figure>
+    <figure><img src="screenshots/10-brew-journal.png" alt="Brew journal" loading="lazy"><figcaption>Brew journal</figcaption></figure>
+    <figure><img src="screenshots/09-add-beans.png" alt="Add beans form" loading="lazy"><figcaption>Add beans</figcaption></figure>
+    <figure><img src="screenshots/11-beans-journal.png" alt="Beans journal" loading="lazy"><figcaption>Beans journal</figcaption></figure>
+    <figure><img src="screenshots/12-search-filters.png" alt="Search filters" loading="lazy"><figcaption>Search filters</figcaption></figure>
+    <figure><img src="screenshots/13-search-results.png" alt="Search results for championship recipes" loading="lazy"><figcaption>Search results</figcaption></figure>
+  </div>
+
+  <footer>Built by James Li · <a href="https://jahoi12345.github.io/Profolio_Website/">Portfolio</a></footer>
+</div>
+</body>
+</html>
